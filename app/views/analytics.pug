@@ -1,0 +1,70 @@
+extends layout
+
+block content
+
+    body
+    div.d-flex.flex-row-reverse
+        form(action='/logout' method='GET')
+            fieldset
+            .form-group
+                button.btn.btn-secondary.my-2.my-sm-0(type='submit') Sign Out
+    div#parentTag
+        div#OverallSection
+            h3.text-info Overall Section #[br]
+            div.container
+                div.row.justify-content-around
+                    div.col-4
+                        input#num.form-control(type='text', placeholder='Input Number')
+                    div.col-4
+                        button#button.btn.btn-primary(type='button') Input Article Size
+
+            div#results
+                ul.nav.nav-tabs
+                    li.nav-item
+                        a.nav-link.active(data-toggle='tab', href='#1') Top Revised Articles
+                    li.nav-item
+                        a.nav-link(data-toggle='tab', href='#2') Bottom Revised Articles
+                    li.nav-item
+                        a.nav-link(data-toggle='tab', href='#3') Largest Group of Registered Users
+                    li.nav-item
+                        a.nav-link(data-toggle='tab', href='#4') Smallest Group of Registered Users
+                    li.nav-item
+                        a.nav-link(data-toggle='tab', href='#5') Articles with: Longest History
+                    li.nav-item
+                        a.nav-link(data-toggle='tab', href='#6') Shortest History
+                #myTabContent.tab-content
+                    div#1.tab-pane.fade.show.active
+                        div#TopA
+                    div#2.tab-pane.fade.show
+                        div#BottomA
+                    div#3.tab-pane.fade.show
+                        div#LargeG
+                    div#4.tab-pane.fade.show
+                        div#SmallG
+                    div#5.tab-pane.fade.show
+                        div#LongestH
+                    div#6.tab-pane.fade.show
+                        div#ShortestH
+            div.container
+                div.row.justify-content-around
+                    div#demo.col-4
+                        button.btn.btn-primary(type='button' onclick='loadDoc()') Load Graph
+            div#myChart
+        <hr class="my-4">
+        div#AuthorSection
+            h3.text-info  Author Section #[br]
+            div.container
+                div.row.justify-content-around
+                    div.col-4
+                        input#auth.form-control(type='search', placeholder='Input Author')
+                    div.col-2
+                        button#AuthorSearch.btn.btn-primary(type='button') Search Author
+                //input#auth(type="search", placeholder="Input Author")
+                //button#AuthorSearch(type='button') Search Author
+                div#authors
+                    div#AuthArt
+        <hr class="my-4">
+        div#IndividualSection
+            h3.text-info  Individual Analytics Section #[br]
+            div#list
+        iframe(src='/Individual', height='1000', width='80%', style="border:none;")

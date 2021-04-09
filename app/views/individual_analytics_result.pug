@@ -1,0 +1,73 @@
+extends layout
+
+block content
+    title Overall Analytics
+    link(rel='stylesheet'
+        type='text/css'
+        href='./css/tablestyle.css'
+        media='screen')
+    head
+        title Overall Analytics
+        script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+        script(src="https://www.gstatic.com/charts/loader.js")
+        script(src="/js/individual_graphs.js")
+        script(src="/js/individual_root.js")
+        link(rel='stylesheet'
+            type='text/css'
+            href='./css/tablestyle.css'
+            media='screen')
+    script.
+        var title = "#{revision[0]['title']}";
+    body
+        h2 Welcome to Individual Analytics You have selected #{revision[0]['title']}
+        if pull == true
+            h3 Latest revision is over a day old, querying MediaWiki API for latest revisions, downloaded #{pullNumber} revisions
+        table
+            tr
+                th Field Name
+                th value
+            tr
+                td title
+                td #{revision[0]['title']}
+            tr
+                td date
+                td #{revision[0]['timestamp']}
+            tr
+                td Number of edits
+                td #{numberOfEdits}
+
+        table
+            tr
+                th Name
+                th Edits
+            tr
+                td #{top5Results[0]['_id']}
+                td #{top5Results[0]['numOfEdits']}
+            tr
+                td #{top5Results[1]['_id']}
+                td #{top5Results[1]['numOfEdits']}
+            tr
+                td #{top5Results[2]['_id']}
+                td #{top5Results[2]['numOfEdits']}
+            tr
+                td #{top5Results[3]['_id']}
+                td #{top5Results[3]['numOfEdits']}
+            tr
+                td #{top5Results[4]['_id']}
+                td #{top5Results[4]['numOfEdits']}
+        li #{news[0]}
+        li #{news[1]}
+        li #{news[2]}
+
+
+        a(href='/pieChart' id='bar1') A bar chart of revision number distributed by year and by user type for this article.
+        br
+        a(href='/barChart' id='pie1') A pie chart of revision number distribution based on user type for this article.
+        br
+        p A bar chart of revision number distributed by year made by one of the top 5 regular users for this article.
+        a(href='/barChart' id='bar20') Person1.
+        a(href='/barChart' id='bar21') Person2.
+        a(href='/barChart' id='bar22') Person3.
+        a(href='/barChart' id='bar23') Person4.
+        a(href='/barChart' id='bar24') Person5.
+        div#myChart

@@ -1,0 +1,10 @@
+Hey, this is just to get the ball rolling, basically just a slightly modified version of the week 8 tutorial site
+that reads from the assignment data and prints to the web page the top two most revised wiki pages as outlined 
+in the overall analytics page assignment specs. No interesting front end style yet lol.
+It also needs the node_modules folder from the tutorial, I'm still getting used to github so I haven't put it in due 
+to the amount of files, so just put that folder in the root of the assignment folder on your desktops and it should work 
+after the npm installs to view the page just use the localhost:3000\wiki\Overall url as the landing page doesn't work yet. 
+If I manage to get any more done I'll upload it to a branch first before we decide to merge anything into the master branch.
+And obviously feel free to add or change anything as you see fit.
+Regards,
+Carl

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    title Overall Analytics
+    link(rel='stylesheet'
+        type='text/css'
+        href='./css/tablestyle.css'
+        media='screen')
+    script(src="/js/individual_root.js")
+    body
+        div.d-flex.flex-row-reverse
+        div.d-inline-flex
+            h2 Welcome to Individual Analytics 
+        div.d-flex
+            h5 Select article from the drop down list:
+        div.d-flex
+            form(action='/Individual/results' method="post")
+                label Article
+                select(name='articleList')
+                    each article in list
+                        option=article
+                    input(type='submit', value='Submit')
+

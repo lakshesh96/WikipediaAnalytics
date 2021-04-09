@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+
+head
+    title Wikipedia Analytics
+    link(href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/flatly/bootstrap.min.css", rel="stylesheet", integrity="sha384-mhpbKVUOPCSocLzx2ElRISIORFRwr1ZbO9bAlowgM5kO7hnpRBe+brVj8NNPUiFs", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
+    nav#myNavBar.navbar.navbar-expand-lg.navbar-dark.bg-primary
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarColor01', aria-controls='navbarColor01', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarColor01.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/logout')
+                        | Sign Out
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/Overall') Overall Analytics
+                        script(src="https://code.jquery.com/jquery-3.2.1.js")
+                        script(src="/js/overall_ajax.js")
+                        script(src="https://www.gstatic.com/charts/loader.js")
+                        script(src="/js/overall_graphs.js")
+                        script(src="/js/author_ajax.js")
+                li.nav-item
+                    a.nav-link(href='/Individual') Individual Analytics
+            // todo Add logic based on user session to make these buttons as sign out
+            form.form-inline.my-2.my-lg-0
+                h3.text-center.text-success Wikipedia Analytics
+    block content
+

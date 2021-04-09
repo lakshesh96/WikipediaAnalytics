@@ -1,0 +1,97 @@
+extends layout
+
+block content
+    body
+        .container
+            div#banner.page-header
+                div
+                    div.text-center
+                        p.lead Single Page Web App to analyse Revision Histories of Wikipedia Articles
+                        // button#showSignInFormButton.btn.btn-secondary.mr-sm-2(type='button') Sign In
+                        // button#showSignUpFormButton.btn.btn-secondary.my-2.my-sm-0(type='button') Sign Up
+                        // Display messages after Signin or Signup is unsuccessful
+                        if (message.length > 0)
+                            div#toastError.toast.show.alert-danger.text-center(role='alert', aria-live='assertive', aria-atomic='true')
+                                .toast-header
+                                    strong.mr-auto Authentication Failed
+                                    button#closeToastButton.ml-2.mb-1.close(type='button', data-dismiss='toast', aria-label='Close') ×
+                                .toast-body
+                                    p= message
+
+            div.d-flex.justify-content-center
+                div#signInForm.col-lg-4.jumbotron
+                    form(action="/login" method="post")
+                        fieldset
+                            legend.text-center Sign In
+                            .form-group
+                                label(for='email') Email address
+                                input#email.form-control(type='email', placeholder='Enter email' name='email')
+                            .form-group
+                                label(for='password') Password
+                                input#password.form-control(type='password', placeholder='Password' name='password')
+                            .form-group.text-center
+                                button.btn.btn-primary(type='submit') Sign In
+                            .form-group.text-center
+                                label#showSignUpFormText.btn-link Not Registered yet? Click here to Sign Up.
+                            .form-group.text-center
+                                label#showResetFormText.btn-link Forgot Password? Click here to Reset.
+
+                div#signUpForm.col-lg-4.jumbotron
+                    form(action='/signup' method='POST')
+                        fieldset
+                            legend.text-center Sign Up
+                            .form-group
+                                label(for='input_firstname') First Name
+                                input.form-control(type='text', placeholder='Enter First Name', id ='input_firstname', name='input_firstname' required)
+                            .form-group
+                                label(for='input_lastname') Last Name
+                                input.form-control(type='text', placeholder='Enter Last Name', id ='input_lastname', name='input_lastname' required)
+                            .form-group
+                                label(for='email') Email address
+                                input.form-control(type='email', placeholder='Enter email', id ='email', name='email' required)
+                            .form-group
+                                label(for='password') Password
+                                input.form-control(type='password', placeholder='Password', id ='password', name='password' required minlength='8' maxlength='12')
+                                small#passwordHelp.form-text.text-muted The password should consist of minimum 8 and maximum 12 characters.
+                            .form-group
+                                label(for='input_passwordConfirm') Confirm Password
+                                input.form-control(type='password', placeholder='Re Enter Password', id ='input_passwordConfirm', name='input_passwordConfirm' required minlength='8' maxlength='12')
+                            .form-group
+                                label(for='input_securityQuestion') Please choose a Security Question
+                                select.form-control(id ='input_securityQuestion', name='input_securityQuestion' required)
+                                    option What was your first pet's name?
+                                    option What is your mother's maiden name?
+                            .form-group
+                                label(for='input_securityAnswer') Answer
+                                input.form-control(type='text', placeholder='Enter your Answer', id ='input_securityAnswer', name='input_securityAnswer' required)
+                            .form-group.text-center
+                                button.btn.btn-primary(type='submit') Sign Up
+                            .form-group.text-center
+                                label#showSignInFormText.btn-link Already have an account? Click here to Sign In.
+                div#resetForm.col-lg-4.jumbotron
+                    div#securityQuestionForm
+                        form(action="" method="post")
+                            fieldset
+                                legend.text-center Password Reset
+                                .form-group
+                                    label(for='emailForPasswordReset') Email address
+                                    input#emailForPasswordReset.form-control(type='email', placeholder='Enter email' name='emailForPasswordReset')
+                                .form-group.text-center
+                                    button#getSecurityQuestionButton.btn.btn-primary(type='button' onclick='getSecurityQuestion()') Submit
+                    div#securityAnswerForm
+                        form(action="" method="post" )
+                            fieldset
+                                .form-group
+                                    label Please answer the Security Question:
+                                    label#securityQuestion
+                                .form-group
+                                    label(for='securityAnswer') Your Answer:
+                                    input#securityAnswer.form-control(type='text', name='securityAnswer', required)
+                                .form-group
+                                    label(for='newPassword') New Password
+                                    input.form-control(type='password', placeholder='New Password', id ='newPassword', name='newPassword' required minlength='8' maxlength='12')
+                                    small#passwordHelp.form-text.text-muted The password should consist of minimum 8 and maximum 12 characters.
+                                .form-group.text-center
+                                    button.btn.btn-primary(type='button' onclick='resetPassword()') Submit
+                    label#showSignInFormText2.btn-link Already have an account? Click here to Sign In.
+    script(src="/js/landing.js")

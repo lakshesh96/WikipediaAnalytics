@@ -1,0 +1,38 @@
+doctype html
+
+html(lang="en")
+head
+    title Overall Analytics
+    script(src="https://code.jquery.com/jquery-3.2.1.js")
+    script(src="/js/overall_ajax.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+    script(src="https://www.gstatic.com/charts/loader.js")
+    script(src="/js/overall_graphs.js")
+    link(rel='stylesheet'
+        type='text/css'
+	    href='/css/tablestyle.css'
+	    media='screen')
+
+body
+h1 Overall Analytics
+div#OverallSection
+    input#num(type="search", placeholder="num")
+    button#button(type='button') Search
+    #demo
+        h2 Let AJAX change this text
+        button(type='button' onclick='loadDoc()') Change Content
+    div#results
+        each val in revision1
+            if val._id
+                table#topRevised
+                    tr
+                        th Field Name
+                        th value
+                    tr
+                        td title
+                        td #{val._id}
+                    tr
+                        td Number of revisions
+                        td #{val.numOfEdits}
+a(href='/barChart' id='bar') Bar Charts
+div#myChart
